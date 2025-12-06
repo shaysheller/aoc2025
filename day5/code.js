@@ -52,6 +52,18 @@ const check = (intervals, numbers) => {
   return result;
 };
 
+const check2 = (intervals) => {
+  let result = 0;
+
+  for (let i = 0; i < intervals.length; i++) {
+    let [min, max] = intervals[i];
+
+    result += max - min + 1;
+  }
+
+  return result;
+};
+
 const func = (a) => {
   const aInterval = a[0].split('\n').map((elem) => {
     return [
@@ -66,7 +78,7 @@ const func = (a) => {
 
   let result = 0;
 
-  result += check(merged, aCheck);
+  result += check2(merged, aCheck);
 
   return result;
 };
