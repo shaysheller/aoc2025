@@ -47,44 +47,51 @@ const txt = parse('./text.txt').split('\n');
 
 let psample = p(sample);
 let ptxt = p(txt);
-console.log(psample);
 
-const func = (a) => {
+const funcb = (a) => {
   let result = 0;
 
   for (let i = 0; i < a.length; i++) {
-    let elem = a[i];
+    let elem = a[i]; // [ '123', ' 45', '  6', '*' ],
+    let length = elem[0].length;
     let sign = elem[elem.length - 1];
-    let curr = 0;
+    let curr = sign === '*' ? 1 : 0;
 
-    if (sign === '*') {
-      curr = 1;
-    }
-
-    let num = '';
-
-    for (let j = 0; j < elem[0].length; j++) {
-      let currIndex = 0;
-
-      while (currIndex < elem.length - 1) {
-        if (elem[j][currIndex] !== ' ') {
-          console.log('adding this num', elem[j][currIndex]);
-          num += elem[j][currIndex];
+    for (let j = length - 1; j >= 0; j--) {
+      // how many times we're
+      let track = '';
+      for (let k = 0; k <= elem[k].length + 1; k++) {
+        if (elem[k][j] !== ' ') {
+          track += elem[k][j];
         }
-        currIndex++;
       }
+
       if (sign === '*') {
-        curr *= Number(num);
+        curr *= Number(track);
       } else {
-        curr += Number(num);
+        curr += Number(track);
       }
-      // console.log('num', num);
-      result += curr;
     }
+    result += curr;
   }
 
   return result;
 };
 
-console.log('sample', func(psample));
-// console.log('txt', func(txt));
+console.log('sample', funcb(psample));
+console.log('txt', funcb(ptxt));
+
+/*
+  what needs to be done :
+
+    we need to do the following array[0] times
+    we have a number with n digits. we can get that number by getting array[col][0];
+
+    when we are iterating through the number we need to check every row
+      array[0][j] j < array[0].length - 1; 
+    11156388595076
+    11159825706149
+    
+
+
+*/
