@@ -10,5 +10,7 @@ const txt = parse('./txt.txt').split(`\n`);
 
   once we get the different adj lists we can multiply the counts together. 
 
+  idk
+
 
 */
