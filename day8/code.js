@@ -1,6 +1,5 @@
 const { parse, c } = require('../functions.js');
 const fs = require('fs');
-const { map } = require('mathjs');
 
 const sample = parse('./sample.txt')
   .split(`\n`)
